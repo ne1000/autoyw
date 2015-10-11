@@ -1,6 +1,8 @@
 #!/usr/bin/env python
+#_*_coding:utf-8_*_
 
 import paramiko
+import hashlib
 
 class HostInfo:
     number = 0
@@ -39,3 +41,8 @@ class HostInfo:
 
     def ssh_close(self, ssh):
         ssh.close()
+
+    def generate_hash_code(self, checkfile):
+        m = hashlib.md5()
+        m.update(checkfile)
+        return m.hexdigest()
